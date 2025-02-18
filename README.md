@@ -65,10 +65,66 @@ FuzzBlitz идеально подходит для пентестеров, ра�
     Фаззинг с POST-запросами и данными: python fuzzblitz.py -u http://example.com/ -w wordlist.txt -X POST -d "param1=value1&param2=value2"
     
 
-    Фаззинг с пользовательскими заголовками: python fuzzblitz.py -u http://example.com/ -w wordlist.txt -H "Authorization: Bearer token" "Content-Type: application/json"
+    Фаззинг с пользовательскими заголовками: python fuzzblitz.py -u http://example.com/ -w wordlist.txt -H "Authorization: Bearer token" "Content-Type: application/json"Пример словаря (wordlist.txt)
 
  
-    Сохранение результатов в файл: python fuzzblitz.py -u http://example.com/ -w wordlist.txt -o results.json -o или --output: Файл для сохранения результатов в формате JSON.
+ -----
+
+Создайте текстовый файл wordlist.txt с путями для фаззинга, например:
+
+
+admin
+login
+test
+backup
+api
+user
+
+-----
+
+Пример вывода
+
+После запуска инструмента вы увидите вывод в консоли:
+
+[*] Starting FuzzBlitz on http://example.com/ with 10 threads...
+[+] Found: http://example.com/admin (Status: 200)
+[+] Found: http://example.com/login (Status: 200)
+[-] Not found: http://example.com/test (Status: 404)
+[-] Not found: http://example.com/backup (Status: 404)
+
+[+] FuzzBlitz completed!
+[*] Total time: 12.34 seconds
+[+] Valid paths found:
+URL: http://example.com/admin, Status: 200, Length: 1234
+URL: http://example.com/login, Status: 200, Length: 5678
+[+] Results saved to results.json
+
+-----
+
+Сохранение результатов
+
+Если указан параметр -o, результаты будут сохранены в JSON-файл. Пример содержимого файла results.json:
+
+
+[
+    {
+        "url": "http://example.com/admin",
+        "status": 200,
+        "length": 1234
+    },
+    {
+        "url": "http://example.com/login",
+        "status": 200,
+        "length": 5678
+    }
+]
+
+-----
+ 
+ 
+Сохранение результатов в файл: python fuzzblitz.py -u http://example.com/ -w wordlist.txt -o results.json -o или --output: Файл для сохранения результатов в формате JSON.
+
+    
 
     
     
