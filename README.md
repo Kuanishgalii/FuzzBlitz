@@ -124,6 +124,11 @@ URL: http://example.com/login, Status: 200, Length: 5678
  
 Сохранение результатов в файл: python fuzzblitz.py -u http://example.com/ -w wordlist.txt -o results.json -o или --output: Файл для сохранения результатов в формате JSON.
 
+
+-----
+
+Используйте его только в законных целях!
+
     
 
     
